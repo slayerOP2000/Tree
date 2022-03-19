@@ -1,0 +1,57 @@
+Vertical Order Traversal
+hum logg mapping ka istemal krenge yahan according to numberline.
+horizontal distance ki levelwise mapping.
+<-----(-2)----(-1)-----(0)-----(1)-----(2)-----(3)
+			1
+		2		3
+	4		5 6		7
+				8		9
+
+<0> -> 1,5,6
+<-1> -> 2
+<1> -> 3,8
+<-2> -> 4
+<2> -> 7
+<3> -> 9
+
+map<int,map<int,vector<int>>> nodes;
+requirement HD,LVL.
+Hum logg queue rkhlenge ismei
+queue<pair<Node*,pair<int,int>>; phela walla horizontal distance btayega dusra walla level walla btayega.
+
+class Solution
+{
+    public:
+    //Function to find the vertical order traversal of Binary Tree.
+    vector<int> verticalOrder(Node *root)
+    {
+        //Your code here
+        map<int,map<int,vector<int> > > nodes;
+        queue<pair<Node*, pair<int,int> > > q;
+        vector<int> ans;
+        if(root==NULL)
+            return ans;
+        q.push(make_pair(root,make_pair(0,0)));
+        while(!q.empty())
+        {
+            pair<Node*, pair<int,int> > temp = q.front();
+            q.pop();
+            Node* frontNode = temp.first;
+            int hd = temp.second.first; 
+            int lvl = temp.second.second;
+            nodes[hd][lvl].push_back(frontNode->data);
+            if(frontNode->left)
+                q.push(make_pair(frontNode->left,make_pair(hd-1,lvl+1))); // tree mei left mei horizontal distance decrease ho rhaa aur level increase ho rhaa
+            if(frontNode->right)
+                q.push(make_pair(frontNode->right,make_pair(hd+1,lvl-1)));
+        }
+        for(auto i : nodes){
+            for(auto j : i.second) //j  represent row in which j -> <int,vector<int>>
+            {
+                for(auto k:j.second)
+                    ans.push_back(k);
+            }
+        }
+        return ans;
+    }
+};
