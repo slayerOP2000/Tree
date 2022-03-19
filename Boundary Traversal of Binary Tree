@@ -1,3 +1,23 @@
+Boundary Traversal
+
+Algo 
+1. phele pura left ko print kralunga aur leaf node ke case mei rukjaunga.
+2. leaf node print kradungaa(left->right).
+3. right print kradunga exclusive of leaf node.
+
+Left Part.
+1. Phele toh tum root->data ko print kraloo
+2. Agr Left present hai toh left ki call krdo warna right ki call krdoo
+
+Leaf Node
+1. Agr humlogg leaf node pe hain toh hum logg leaf node ka data store kralenge
+2. Phir left pe traverse krdenge 
+3. Right pe traverse krdenge.
+
+RightNode
+1. root->right ke liye function call aayi hogii.
+2. jb leaf node phuch jao tb print krlo.(waps jab aayega)
+
 class Solution {
 public:
     void traverseLeft(Node* root,vector<int> &ans)
