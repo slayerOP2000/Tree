@@ -1,0 +1,51 @@
+Node* LCA(Node *root, int n1, int n2)
+{
+   //Your code here
+//   if(root == NULL)
+//   {
+//       return NULL;
+//   }
+//   Node* LeftAns = LCA(root->left,n1,n2);
+//   Node* RightAns = LCA(root->right,n1,n2);
+//   if(LeftAns != NULL || RightAns != NULL)
+//   {
+//       return root;
+//   }
+//   else if(LeftAns != NULL && RightAns == NULL)
+//   {
+//       return LeftAns;
+//   }
+//   else if(LeftAns == NULL && RightAns != NULL)
+//   {
+//       return RightAns;
+//   }
+//   else
+//   {
+//       return NULL;
+//   }
+   
+//}
+if(root == NULL)
+        {
+            return NULL;
+        }
+        
+        if(root->data == n1 || root->data == n2) 
+        {
+            return root;
+        }
+        
+        Node* leftAns = LCA(root->left, n1, n2);
+        Node* rightAns = LCA(root->right, n1, n2);
+        
+        if(leftAns != NULL && rightAns != NULL) 
+        {
+            return root;
+        }
+        else if(leftAns != NULL && rightAns == NULL)
+            return leftAns;
+        else if(leftAns == NULL && rightAns != NULL)
+            return rightAns;
+        else
+            return NULL;
+}
