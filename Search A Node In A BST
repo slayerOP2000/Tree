@@ -1,0 +1,25 @@
+This is an iterative solution in which the SC is coming in right pattern 
+
+bool search(Node* root, int x) {
+    // Your code here
+   Node *temp = root;
+   while(temp!=NULL)
+   {
+       if(temp->data == x)
+       {
+           return true;
+       }
+       if(temp->data > x)
+       {
+           temp = temp->left;
+       }
+       else
+       {
+           temp = temp->right;
+       }
+   }
+   return false;
+}
+
+
+Recursive Solution is coming errror as SC is too 
