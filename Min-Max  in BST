@@ -1,0 +1,19 @@
+Node* minVal(Node* root)  // Minimum value 
+{
+    Node* temp = root;
+    while(temp->left !=NULL)
+    {
+        temp = temp->left;
+    }
+    return temp;
+}
+
+Node* maxVal(Node* root) //Maximum value
+{
+    Node* temp = root;
+    while(temp->right!=NULL)
+    {
+        temp = temp->right;
+    }
+    return temp;
+}
