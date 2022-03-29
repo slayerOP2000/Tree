@@ -1,0 +1,39 @@
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+{
+
+    // Your code goes here
+    Node* temp = root;
+  //  int pred = -1;
+//    int succ = -1;
+    while(temp->data!=key)
+    {
+        if(temp->data > key)
+        {
+            suc = temp->data;
+            temp = temp->data;
+            
+        }
+        else
+        {
+            
+            pre = temp->data;
+            temp = temp->right;
+        }
+    }
+    
+    Node*leftTree = temp->left;
+    while(leftTree!=NULL)
+    {
+        pre = leftTree->data;
+        leftTree = leftTree -> right;
+    }
+    Node* righTree = temp->right;
+    while(rightTree!=NULL)
+    {
+        suc = rightTree->data;
+        rightTree = rightTree -> left;
+    }
+    pair<int,int> ans = make_pair(pre,suc);
+    return ans;
+
+}
